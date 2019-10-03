@@ -48,3 +48,36 @@ chartGroup.append("g").attr("transform", `translate(0, ${height})`).call(bottomA
 
 chartGroup.append("g").call(leftAxis);
 
+// APPEND AXES TO CHART
+
+chartGroup.append("g")
+    .attr("transform", 'translate(0, ${height})')
+    .call(bottomAxis);
+
+chartGroup.append("g")
+    .call(leftAxis);
+
+// APPEND CIRCLES TO DATA POINTS
+
+var circlesGroup = chartGroup.selectAll("circle")
+    .data(povertyData)
+    .enter()
+    .append("circle")
+    .attr("cx", (d, i) => xScale(i))
+    .attr("cy", d => yScale(d))
+    .attr("r", "5")
+    .attr("fill", "green")
+    .attr("opacity", .5)
+
+// INITIALIZE TOOL TIP
+
+var toolTip = d3.select("body").append("div")
+    .attr("class", "tooltip");
+
+// MAKE RESPONSIVE
+
+makeResponsive();
+
+// RESPONSIFY WINDOW RESIZE
+
+d3.select(window).on("resize", makeResponsive);
