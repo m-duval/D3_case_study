@@ -11,7 +11,7 @@ def hello():
 @app.route('/data')
 def data():
 
-    df = pd.read_csv('datasets/data.csv')
+    df = pd.read_csv('data/data.csv')
     return jsonify(df.to_dict(orient="records"))
 
 

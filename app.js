@@ -22,10 +22,8 @@ var chartGroup = svg.append("g");
 
 // IMPORT CSV DATA
 
-d3.csv("data.csv", function(error, povertyData) {
+d3.csv("data/data.csv", function(error, povertyData) {
     if (error) return console.warn(error);
-    
-console.log(povertyData);
 
     povertyData.forEach(function(data) {
       data.poverty = +data.poverty;
